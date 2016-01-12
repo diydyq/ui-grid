@@ -1,7 +1,7 @@
 (function(){
 
 angular.module('ui.grid')
-.factory('GridColumn', ['gridUtil', 'uiGridConstants', 'i18nService', function(gridUtil, uiGridConstants, i18nService) {
+.factory('GridColumn', ['gridUtil', 'uiGridConstants', 'i18nService', '$templateCache', function(gridUtil, uiGridConstants, i18nService, $templateCache) {
 
   /**
    * ******************************************************************************************
@@ -545,6 +545,10 @@ angular.module('ui.grid')
       };
     }
 
+    /**
+     * @description Convert cellTemplateUrl into cellTemplate.
+     */
+    colDef.cellTemplate = colDef.cellTemplateUrl ? $templateCache.get(colDef.cellTemplateUrl) : colDef.cellTemplate;
 
     /**
      * @ngdoc property
